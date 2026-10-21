@@ -13,7 +13,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="bg-base-100 shadow-sm sticky top-0">
+    <div className="bg-base-100 shadow-sm sticky left-0 top-0 z-50">
       <div className="navbar container lg:w-[75%] mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -48,18 +48,21 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
-          <details className="dropdown">
-            <summary className="btn border-0 bg-transparent">
+          <div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="m-1 bg-transparent ">
               {" "}
               <Image
                 src={"/bg-sbds.webp"}
                 height={50}
                 width={50}
                 alt="SBDS"
-                className="rounded-full h-9 w-9"
+                className="rounded-full h-9 w-9 cursor-pointer"
               />
-            </summary>
-            <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+            </div>
+            <ul
+              tabIndex={-1}
+              className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+            >
               <li>
                 <a>Item 1</a>
               </li>
@@ -67,7 +70,7 @@ const Navbar = () => {
                 <a>Item 2</a>
               </li>
             </ul>
-          </details>
+          </div>
         </div>
       </div>
     </div>
