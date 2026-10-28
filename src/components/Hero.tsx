@@ -1,3 +1,5 @@
+import LoginPage from "./Login";
+
 const Hero = () => {
   return (
     <div>
@@ -8,14 +10,17 @@ const Hero = () => {
           backgroundImage: "url(bg-sbds.webp)",
         }}
       >
-        <div className="hero-overlay"></div>
-        <div className="hero-content text-neutral-content text-center">
+        {" "}
+        <div className="hero-overlay text-neutral-content px-10">
+          <LoginPage />
+        </div>
+        {/* <div className=" text-neutral-content ">
           <div className="">
             <h1 className="mb-5 text-3xl font-bold">Welcome !</h1>
             <p className="mb-5">Swapnabaaz Development Society</p>
             <button className="btn btn-primary">Get Started</button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
