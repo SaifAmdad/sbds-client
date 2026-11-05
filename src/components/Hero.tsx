@@ -12,7 +12,7 @@ const Hero = () => {
       >
         {" "}
         <div className="hero-overlay text-neutral-content px-10">
-          <LoginPage />
+          {/* <LoginPage /> */}
         </div>
         {/* <div className=" text-neutral-content ">
           <div className="">

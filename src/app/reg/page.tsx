@@ -1,7 +1,6 @@
 "use client";
 
 import GoogleSignin from "@/components/GoogleSignin";
-import LoginPage from "@/components/Login";
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,25 +10,6 @@ import { toast } from "react-toastify";
 
 function RegisterPage() {
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState("/user.webp");
-  const [uploaded, setUploaded] = useState(false);
-
-  const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const image: any = e.target.files?.[0];
-    const formData = new FormData();
-    formData.append("image", image);
-    const res = await fetch(
-      "https://api.imgbb.com/1/upload?key=04efc9c978b56156b397800ad12c5272",
-      {
-        method: "POST",
-        body: formData,
-      },
-    );
-    console.log(e.target.files);
-    const { data } = await res.json();
-    setImageUrl(data.url);
-    setUploaded(true);
-  };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,15 +21,18 @@ function RegisterPage() {
       name: formData.get("name") as string, // required
       email: formData.get("email") as string, // required
       password: formData.get("name") as string, // required
-      image: imageUrl,
+      image: "/user.webp",
       callbackURL: "/",
     });
+
+    console.log(data);
+    console.log(formData);
 
     if (data) {
       setLoading(false);
 
       toast.success("User Registered Successfully !");
-      redirect("/");
+      // redirect("/");
     }
 
     if (error) {
@@ -83,13 +66,14 @@ function RegisterPage() {
                   </p>
                 </div>
 
-                <Image
+                {/* <Image
                   height={100}
                   width={100}
                   src={imageUrl}
                   alt="User"
+                  loading="eager"
                   className="h-25 w-25 mx-auto border border-white/60 rounded-full"
-                />
+                /> */}
 
                 <label className="label text-white text-[16px]">Name</label>
                 <input
@@ -118,15 +102,14 @@ function RegisterPage() {
                   required
                 />
 
-                <label className="label text-white text-[16px]">Image</label>
+                {/* <label className="label text-white text-[16px]">Image</label>
                 <input
                   type="file"
                   disabled={uploaded}
                   name="img"
                   id="img"
-                  onChange={uploadImage}
                   className="file-input file-input-ghost w-full bg-transparent border border-white/70"
-                />
+                /> */}
 
                 <button className="btn bg-white text-blue-400 mt-4">
                   {loading ? (

@@ -1,13 +1,9 @@
-import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
-import LoginPage from "./login/page";
+import HomePage from "@/components/HomePage";
 
 export default function Home() {
   return (
     <div>
-      <Navbar />
-      <Hero />
-      {/* <LoginPage /> */}
+      <HomePage />
     </div>
   );
 }
